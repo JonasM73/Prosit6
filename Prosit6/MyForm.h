@@ -51,14 +51,14 @@ namespace P6new {
 
 	private: NS_Comp_Svc::CLservices^ oSvc;
 	private: System::Data::DataSet^ oDs;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::TextBox^ txt_cp;
+	private: System::Windows::Forms::TextBox^ txt_ville;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::TextBox^ txt_adresse;
 	private: System::Windows::Forms::Label^ label6;
 	protected:
 
@@ -83,14 +83,14 @@ namespace P6new {
 			this->txt_id = (gcnew System::Windows::Forms::TextBox());
 			this->txt_nom = (gcnew System::Windows::Forms::TextBox());
 			this->txt_prenom = (gcnew System::Windows::Forms::TextBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->txt_cp = (gcnew System::Windows::Forms::TextBox());
+			this->txt_adresse = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->txt_ville = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_enr))->BeginInit();
 			this->SuspendLayout();
@@ -136,6 +136,7 @@ namespace P6new {
 			this->btn_delete->TabIndex = 3;
 			this->btn_delete->Text = L"DELETE";
 			this->btn_delete->UseVisualStyleBackColor = true;
+			this->btn_delete->Click += gcnew System::EventHandler(this, &MyForm::btn_delete_Click);
 			// 
 			// btn_update
 			// 
@@ -146,6 +147,7 @@ namespace P6new {
 			this->btn_update->TabIndex = 4;
 			this->btn_update->Text = L"UPDATE";
 			this->btn_update->UseVisualStyleBackColor = true;
+			this->btn_update->Click += gcnew System::EventHandler(this, &MyForm::btn_update_Click);
 			// 
 			// txt_id
 			// 
@@ -171,29 +173,21 @@ namespace P6new {
 			this->txt_prenom->Size = System::Drawing::Size(408, 22);
 			this->txt_prenom->TabIndex = 7;
 			// 
-			// textAdresse
+			// txt_cp
 			// 
-			this->textBox1->Location = System::Drawing::Point(563, 315);
-			this->textBox1->Margin = System::Windows::Forms::Padding(4);
-			this->textBox1->Name = L"txt_adresse";
-			this->textBox1->Size = System::Drawing::Size(408, 22);
-			this->textBox1->TabIndex = 8;
+			this->txt_cp->Location = System::Drawing::Point(563, 380);
+			this->txt_cp->Margin = System::Windows::Forms::Padding(4);
+			this->txt_cp->Name = L"txt_cp";
+			this->txt_cp->Size = System::Drawing::Size(508, 22);
+			this->txt_cp->TabIndex = 15;
 			// 
-			// textVille
+			// txt_adresse
 			// 
-			this->textBox2->Location = System::Drawing::Point(563, 350);
-			this->textBox2->Margin = System::Windows::Forms::Padding(4);
-			this->textBox2->Name = L"txt_ville";
-			this->textBox2->Size = System::Drawing::Size(408, 22);
-			this->textBox2->TabIndex = 9;
-			// 
-			// textCP
-			// 
-			this->textBox3->Location = System::Drawing::Point(563, 380);
-			this->textBox3->Margin = System::Windows::Forms::Padding(4);
-			this->textBox3->Name = L"txt_cp";
-			this->textBox3->Size = System::Drawing::Size(508, 22);
-			this->textBox3->TabIndex = 15;
+			this->txt_adresse->Location = System::Drawing::Point(563, 315);
+			this->txt_adresse->Margin = System::Windows::Forms::Padding(4);
+			this->txt_adresse->Name = L"txt_adresse";
+			this->txt_adresse->Size = System::Drawing::Size(408, 22);
+			this->txt_adresse->TabIndex = 8;
 			// 
 			// label1
 			// 
@@ -240,6 +234,14 @@ namespace P6new {
 			this->label5->TabIndex = 14;
 			this->label5->Text = L"Ville";
 			// 
+			// txt_ville
+			// 
+			this->txt_ville->Location = System::Drawing::Point(563, 350);
+			this->txt_ville->Margin = System::Windows::Forms::Padding(4);
+			this->txt_ville->Name = L"txt_ville";
+			this->txt_ville->Size = System::Drawing::Size(408, 22);
+			this->txt_ville->TabIndex = 9;
+			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
@@ -255,14 +257,14 @@ namespace P6new {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1059, 424);
 			this->Controls->Add(this->label6);
-			this->Controls->Add(this->textBox3);
+			this->Controls->Add(this->txt_adresse);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->txt_ville);
+			this->Controls->Add(this->txt_cp);
 			this->Controls->Add(this->txt_prenom);
 			this->Controls->Add(this->txt_nom);
 			this->Controls->Add(this->txt_id);
@@ -294,8 +296,16 @@ namespace P6new {
 	}
 	private: System::Void btn_insert_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		this->oSvc->ajouterUnePersonne(this->txt_nom->Text, this->txt_prenom->Text, this->txt_ville->ville, this->txt_adresse->adresse, this->text_cp->cp);
+		int codePostal = System::Convert::ToInt32(txt_cp->Text);
+		this->oSvc->ajouterUnePersonne(this->txt_nom->Text, this->txt_prenom->Text, this->txt_ville->Text, this->txt_adresse->Text, codePostal);
 	}
 	
+private: System::Void btn_delete_Click(System::Object^ sender, System::EventArgs^ e) {
+	int ID = System::Convert::ToInt32(txt_id->Text);
+	this->oSvc->deleteuneperssonne(ID);
+}
+private: System::Void btn_update_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->oSvc = gcnew NS_Comp_Svc::CLservices();
+}
 };
 }

@@ -15,7 +15,7 @@ namespace NS_Comp_Mappage
 	public:
 		System::String^ Select(void);
 		System::String^ Insert(void);
-		System::String^ Delete(void);
+		System::String^ Delete(int);
 		System::String^ Update(void);
 		void setId(int);
 		void setNom(System::String^);
@@ -29,6 +29,7 @@ namespace NS_Comp_Mappage
 		System::String^ getville(void);
 		System::String^ getAdresse(void);
 		int getCP(void);
+
 
 	};
 }	

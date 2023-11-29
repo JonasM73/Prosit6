@@ -28,3 +28,10 @@ void NS_Comp_Svc::CLservices::ajouterUnePersonne(System::String^ nom, System::St
 
 	this->oCad->actionRows(sql);
 }
+
+
+void NS_Comp_Svc::CLservices::deleteuneperssonne(int id) {
+	System::String^ sql;
+	sql = this->oMappTB->Delete(id);
+	this->oCad->actionRows(sql);
+}

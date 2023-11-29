@@ -14,9 +14,12 @@ System::String^ NS_Comp_Mappage::CLmapTB::Insert(void)
 		"DECLARE @ClientId INT = SCOPE_IDENTITY();" +
 		"INSERT INTO [Prosit6].[dbo].[Adresse] (id_personne, ville, adresse, CP) VALUES(@ClientId, '" + this->ville + "','" + this->adresse + "','" + this->cp + "');";
 }
-System::String^ NS_Comp_Mappage::CLmapTB::Delete(void)
+System::String^ NS_Comp_Mappage::CLmapTB::Delete(int id_personne)
 {
-	return "";
+	return "BEGIN TRANSACTION; " +
+		"DELETE FROM [Prosit6].[dbo].[Adresse] WHERE id_personne = " + id_personne + ";" +
+		"DELETE FROM [Prosit6].[dbo].[Client] WHERE id_personne = " + id_personne + ";" +
+		"COMMIT;";
 }
 System::String^ NS_Comp_Mappage::CLmapTB::Update(void)
 {
